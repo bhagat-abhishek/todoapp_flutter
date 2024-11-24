@@ -14,9 +14,6 @@ class _HomePageState extends State<HomePage> {
   List toDoList = [
     ['Simple App', true],
     ['Task 1', true],
-    ['Task 2', true],
-    ['Task 3', true],
-    ['Task 4', true],
   ];
 
   void checkBoxChanged(index) {

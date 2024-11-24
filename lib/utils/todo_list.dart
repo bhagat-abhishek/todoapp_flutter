@@ -26,13 +26,25 @@ class TodoList extends StatelessWidget {
             color: Colors.deepPurple, borderRadius: BorderRadius.circular(15)),
         child: Row(
           children: [
-            Checkbox(value: taskCompleted, onChanged: onChanged),
+            Checkbox(
+              value: taskCompleted,
+              onChanged: onChanged,
+              activeColor: Colors.white,
+              checkColor: Colors.black,
+              side: const BorderSide(
+                color: Colors.white,
+              ),
+            ),
             Text(
               taskName,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  decoration: taskCompleted
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                  decorationColor: Colors.white,
+                  decorationThickness: 3),
             ),
           ],
         ),

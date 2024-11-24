@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _controller = TextEditingController();
+
   List toDoList = [
     ['Simple App', true],
     ['Task 1', true],
@@ -20,6 +22,13 @@ class _HomePageState extends State<HomePage> {
   void checkBoxChanged(index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
+    });
+  }
+
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
     });
   }
 
@@ -49,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                 horizontal: 20,
               ),
               child: TextField(
+                controller: _controller,
                 decoration: InputDecoration(
                   hintText: 'Add a todo item',
                   filled: true,
@@ -70,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: saveNewTask,
             child: const Icon(Icons.add),
           ),
         ],
